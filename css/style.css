@@ -1,0 +1,958 @@
+/* global styles */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* rest base styles */
+html {
+    font-size: 62.5%;
+}
+
+html,
+body {
+    font-family: "Vazirmatn", "Shabnam";
+    direction: rtl;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #ededed;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+input {
+    border: none;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+i {
+    color: #000;
+    cursor: pointer;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/* local fonts */
+@font-face {
+    font-family: 'Shabnam';
+    src: url('../assets/fonts/Shabnam-Thin.woff2') format('woff2'),
+        url('../assets/fonts/Shabnam-Thin.woff') format('woff'),
+        url('../assets/fonts/Shabnam-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Shabnam';
+    src: url('../assets/fonts/Shabnam-Light.woff2') format('woff2'),
+        url('../assets/fonts/Shabnam-Light.woff') format('woff'),
+        url('../assets/fonts/Shabnam-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Shabnam';
+    src: url('../assets/fonts/Shabnam.woff2') format('woff2'),
+        url('../assets/fonts/Shabnam.woff') format('woff'),
+        url('../assets/fonts/Shabnam.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Shabnam';
+    src: url('../assets/fonts/Shabnam-Medium.woff2') format('woff2'),
+        url('../assets/fonts/Shabnam-Medium.woff') format('woff'),
+        url('../assets/fonts/Shabnam-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Shabnam';
+    src: url('../assets/fonts/Shabnam-Bold.woff2') format('woff2'),
+        url('../assets/fonts/Shabnam-Bold.woff') format('woff'),
+        url('../assets/fonts/Shabnam-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* mobile navbar styles */
+#mobile-navbar {
+    width: auto;
+    position: fixed;
+    bottom: 1.6rem;
+    left: 1.6rem;
+    right: 1.6rem;
+    z-index: 10;
+}
+
+.mobile-navbar-box .navbar-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+    background-color: #fff;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+.navbar-box .navbar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 5.3rem;
+    cursor: pointer;
+}
+
+.navbar-item i {
+    font-size: 2.4rem;
+    color: #162C5B;
+}
+
+.navbar-item span {
+    font-family: "Shabnam";
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: 0.3rem;
+}
+
+/* header section styles */
+#header {
+    position: fixed;
+    top: 1.6rem;
+    right: 1.6rem;
+    left: 1.6rem;
+    z-index: 10;
+}
+
+.header-box {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 3rem;
+    width: 100%;
+    background-color: #fff;
+    height: 6rem;
+    border-radius: 1rem;
+}
+
+.header-box i {
+    font-size: 2.8rem;
+    color: #162C5B;
+    transition: all 0.5s ease;
+    display: inline-block;
+}
+
+.header-box #menu-icon.ri-menu-3-line {
+    transform: rotate(0deg);
+}
+
+.header-box #menu-icon.ri-close-line {
+    transform: rotate(180deg);
+    color: #f00;
+}
+
+.header-box h1 {
+    line-height: 0;
+}
+
+.header-logo img {
+    width: 100%;
+    max-height: 3.6rem;
+}
+
+/* side menu styles */
+.main-menu-box {
+    position: fixed;
+    top: 9rem;
+    bottom: 9rem;
+    transform: translateX(120%);
+    width: 80%;
+    background-color: #fff;
+    border-radius: 1rem;
+    overflow-y: auto;
+    transition: all 0.5s ease;
+}
+
+.main-menu-box.active {
+    transform: translateX(0);
+}
+
+.menu-list .menu-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 0.1rem solid #eee;
+}
+
+.menu-list .menu-item:last-child {
+    border-bottom: none;
+}
+
+.menu-list .menu-item i {
+    font-size: 2.6rem;
+}
+
+.menu-list .menu-item a {
+    font-size: 1.6rem;
+    font-weight: 400;
+    width: 100%;
+    color: #162C5B;
+}
+
+/* shadow and border for header, mobile navbar and sidemenu */
+.header-box,
+.main-menu-box,
+.navbar-box {
+    box-shadow: 0.1rem 0.1rem 1.2rem rgba(0, 0, 0, 0.1),
+        -0.1rem -0.1rem 1.2rem rgba(0, 0, 0, 0.1);
+    border: 0.1rem solid #9e9e9ea9;
+}
+
+/* footer section styles */
+#footer {
+    background: #1f3b63;
+}
+
+.footer-box {
+    padding: 2rem 2rem 10rem 2rem;
+}
+
+.footer-box .top-section {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.top-section .badgets-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.badgets-box .badge {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    width: 11rem;
+    height: 10rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    transition: all 0.5s ease;
+}
+
+.badgets-box .badge:hover {
+    transform: translateY(-0.5rem);
+}
+
+.badgets-box .badge img {
+    max-width: 5.5rem;
+    max-height: 3.8rem;
+    object-fit: contain;
+}
+
+.shop-location {
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.shop-location iframe {
+    width: 100%;
+    border: none;
+    border-radius: 0.8rem;
+}
+
+/* separator line styles */
+.footer-box .separator-line {
+    width: 100%;
+    height: 0.2rem;
+    background: #e3a92b;
+    margin: 3rem 0;
+}
+
+/* footer contact styles */
+.footer-box .footer-contact {
+    text-align: center;
+}
+
+.footer-contact .phone-box {
+    color: #ffc037;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.footer-contact .phone-box .phone-num {
+    direction: ltr;
+    unicode-bidi: embed;
+}
+
+.footer-box .shop-address {
+    margin-top: 1.5rem;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 3rem;
+}
+
+.footer-box .shop-address i {
+    font-size: 2.2rem;
+    color: #ffc037;
+    margin-left: 0.3rem;
+    cursor: auto;
+}
+
+/* footer links box styles */
+.footer-box .footer-links-box {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 2.5rem;
+    color: #aeb9c7;
+    font-family: "Shabnam";
+}
+
+.footer-links-box .footer-link {
+    font-size: 1.4rem;
+}
+
+/* social media box styles */
+.footer-box .social-media-box {
+    display: flex;
+    justify-content: center;
+    gap: 1.3rem;
+    margin-top: 5.5rem;
+}
+
+.footer-box .social-media-box .social-media-logo {
+    font-size: 2.6rem;
+    width: 5rem;
+    height: 5rem;
+    color: whitesmoke;
+    padding: 0.8rem;
+    border-radius: 50%;
+}
+
+.social-media-logo#instagram-logo {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.social-media-logo#whatsapp-logo {
+    background: linear-gradient(45deg, #1be27a 0%, #00c853 45%, #00bfa5 100%);
+}
+
+.social-media-logo#telegram-logo {
+    background: linear-gradient(45deg, #00c6ff 0%, #0072ff 100%);
+}
+
+.social-media-logo#linkedin-logo {
+    background: linear-gradient(45deg, #979797 0%, #a1a1a1 100%);
+}
+
+/* copyright box styles */
+.footer-box .copyright-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    font-family: "Shabnam";
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: #ffc037;
+}
+
+/* login page styles */
+.login-page .login-box {
+    background-color: #fff;
+    width: 100%;
+    height: 100dvh;
+    padding: 1.5rem;
+}
+
+.login-box .login-page-logo {
+    text-align: center;
+    margin: 3rem 0;
+}
+
+.login-box .login-page-logo img {
+    max-width: 16.5rem;
+}
+
+.get-phone-box .input-box {
+    position: relative;
+}
+
+.get-phone-box label {
+    display: inline-block;
+    width: 100%;
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    color: #62666d;
+}
+
+.get-phone-box .input-box input {
+    width: 100%;
+    border: 0.2rem solid #cfcfcf;
+    border-radius: 0.8rem;
+    height: 5rem;
+    padding: 1.1rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    direction: ltr;
+    background-color: #fff !important;
+}
+
+.get-phone-box .input-box i {
+    position: absolute;
+    top: 27%;
+    right: 2%;
+    transform: translate(-0.5rem, -0.5rem);
+    font-size: 2rem;
+    color: #ffffff;
+    background-color: #c5c5c5;
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0.5rem;
+    border-radius: 10rem;
+}
+
+.login-form .login-btn {
+    background: linear-gradient(135deg, #6e8efb, #a777e3);
+    border: none;
+    color: white;
+    width: 100%;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+    border-radius: 0.8rem;
+    font-family: inherit;
+    font-size: 1.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0.4rem 1.5rem rgba(110, 142, 251, 0.4);
+}
+
+.login-form h3 {
+    font-size: 1.8rem;
+}
+
+.login-box .info-terms-box .terms-text {
+    font-family: "Shabnam";
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    line-height: 2.3rem;
+    text-align: justify;
+}
+
+/* home - landing page styles */
+#content {
+    background-color: #fff;
+    border-radius: 1rem 1rem 0 0;
+    width: 100%;
+    margin-top: 9rem;
+    border: 0.1rem solid #d8d8d8;
+    padding: 2.5rem 2.2rem;
+}
+
+/* auto type box styles */
+.auto-type-box {
+    background-color: #eeeeee8a;
+    padding: 1rem;
+    height: 6.5rem;
+    margin-bottom: 1.5rem;
+    border-radius: 2.5rem 0;
+    border: 0.1rem solid #d6d6d6;
+    text-align: center;
+}
+
+.auto-type-box .type-text {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #0084ff;
+}
+
+/* banner ad slider styles */
+.banner-ad-slider .swiper-wrapper .swiper-slide img {
+    height: 100%;
+    border-radius: 1rem;
+}
+
+.banner-ad-slider .swiper-pagination {
+    margin-bottom: 1.5rem;
+}
+
+.banner-ad-slider .swiper-pagination .swiper-pagination-bullet-active {
+    width: 1.8rem;
+    border-radius: 0.5rem;
+}
+
+/* static banner ad styles  */
+.static-banner-ad {
+    margin: 0.7rem 0;
+}
+
+.static-banner-ad img {
+    border-radius: 0.6rem;
+}
+
+/* product container styles */
+.product-container {
+    background-image: linear-gradient(360deg, #FF0000C2 -100%, #1F286A 100%);
+    display: flex;
+    gap: 1rem;
+    padding: 2rem;
+    overflow-x: auto;
+    align-items: center;
+    border: 1rem solid;
+    border-image-source: linear-gradient(360deg, #FF0000C2 -100%, #1F286A 100%);
+    border-image-slice: 1;
+    border-top: none;
+    border-bottom: none;
+}
+
+.product-container .section-title {
+    margin: 1.5rem 1rem 1.5rem 2.5rem;
+    text-align: center;
+    word-spacing: -0.4rem;
+}
+
+.product-container .section-title h4 {
+    font-family: "Shabnam";
+    font-weight: bolder;
+    font-size: 2.4rem;
+    width: 11rem;
+    transform: scale(1.3);
+    line-height: 2.5rem;
+    rotate: 350deg;
+    color: #fff;
+}
+
+/* product styles */
+.product-card {
+    flex: 0 0 auto;
+    background-color: #fff;
+    padding: 1.5rem;
+    width: 18rem;
+    border-radius: 1.5rem;
+}
+
+.product-card .product-img img {
+    height: 12rem;
+}
+
+.product-card .product-title {
+    font-size: 1.4rem;
+    font-weight: bold;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: 3em;
+    line-height: 1.5em;
+}
+
+.product-card .product-initial-price {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+}
+
+.product-card .product-initial-price s {
+    color: #3c3c7a;
+    font-size: 1.2rem;
+}
+
+.product-card .product-initial-price span {
+    background: linear-gradient(135deg, #3c3c7a, #6669ae);
+    color: #fff;
+    padding: 0.4rem 0.7rem;
+    border-radius: 0.6rem;
+}
+
+.product-card .product-final-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.6rem;
+}
+
+.product-card .product-final-price i {
+    font-size: 2.2rem;
+    background-color: #eeab00e0;
+    color: #fff;
+    padding: 0.7rem;
+    border-radius: 1rem;
+}
+
+.product-card .product-final-price p {
+    font-size: 1.4rem;
+}
+
+/* shop services styles */
+.shop-services-box {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem 1.3rem;
+    margin-top: 1.8rem;
+}
+
+.shop-services-box .shop-service {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+    width: 30%;
+}
+
+.shop-services-box .shop-service i {
+    font-size: 4rem;
+    color: #2e258b;
+    cursor: auto;
+    border: 0.3rem solid #2e258b;
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+
+.shop-services-box .shop-service span {
+    font-size: 1rem;
+}
+
+/* external hard drive styles */
+.external-harddrive-box {
+    background-image: linear-gradient(360deg, #00ff6a -100%, #008cff 100%);
+    border-image-source: linear-gradient(360deg, #00ff6a -100%, #008cff 100%);
+}
+
+.external-harddrive-box .product-final-price i {
+    background: linear-gradient(135deg, #3c3c7a, #6669ae);
+}
+
+/* category section styles */
+.category-container {
+    margin: 6rem 0;
+}
+
+.category-container .category-title {
+    margin-bottom: 2rem;
+}
+
+.category-container p {
+    font-family: "Shabnam";
+    font-size: 1.6rem;
+    font-weight: bold;
+    padding: 0.7rem 0;
+    border-bottom: 0.3rem solid #077e84;
+}
+
+/* category slider styles */
+.category-slider {
+    background-color: #eeeeee8e;
+}
+
+.category-slider .swiper-wrapper {
+    padding: 1.7rem 0;
+    transition-timing-function: linear !important;
+}
+
+.swiper-slide .category-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.swiper-slide .category-item img {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 0.7rem;
+}
+
+.swiper-slide .category-item h6 {
+    font-size: 1.3rem;
+}
+
+/* the best sellers section styles */
+.best-sellers-box {
+    background-image: linear-gradient(360deg, #d400ff -100%, #ffd900 100%);
+    border-image-source: linear-gradient(360deg, #d400ff -100%, #ffd900 100%);
+}
+
+.best-sellers-box .product-final-price i {
+    background: linear-gradient(135deg, #3c3c7a, #6669ae);
+}
+
+/* mouse pad section styles */
+.mouse-pad-box {
+    background-image: linear-gradient(360deg, #00ffd5 -100%, #006eff 100%);
+    border-image-source: linear-gradient(360deg, #00ffd5 -100%, #006eff 100%);
+}
+
+.mouse-pad-box .product-final-price i {
+    background: linear-gradient(135deg, #3c3c7a, #6669ae);
+}
+
+/* gaming accessories section styles */
+.gaming-accessories-box {
+    background-image: linear-gradient(360deg, #000000 -100%, #ff0000 100%);
+    border-image-source: linear-gradient(360deg, #000000 -100%, #ff0000 100%);
+}
+
+/* equipment category title styles*/
+.equipment-category-title p {
+    border-color: #d01a1a;
+}
+
+/* surface brand section styles */
+.surface-brand-box {
+    background-image: linear-gradient(360deg, #ffc7e3 -100%, #ffecc7 100%);
+    border-image-source: linear-gradient(360deg, #ffc7e3 -100%, #ffecc7 100%);
+}
+
+.surface-brand-box .product-final-price i {
+    background: linear-gradient(135deg, #3c3c7a, #6669ae);
+}
+
+/* modems section styles */
+.modems-box {
+    background-image: linear-gradient(360deg, #ffffff -100%, #8d8d8df1 100%);
+    border-image-source: linear-gradient(360deg, #ffffff -100%, #8d8d8df1 100%);
+}
+
+/* partners section styles */
+.partners-container {
+    margin: 8rem 0 5rem 0;
+}
+
+.partners-container .partners-title {
+    margin-bottom: 3rem;
+    width: 100%;
+    position: relative;
+    padding-top: 2rem;
+}
+
+.partners-title::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 30%;
+    width: 40%;
+    height: 0.2rem;
+    background: #0066ff;
+    border-radius: 0.5rem;
+}
+
+.partners-container .partners-title h3 {
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+/* partners slider styles */
+.partners-container-slider .swiper-wrapper {
+    transition-timing-function: linear !important;
+}
+
+.swiper-slide .partners-item {
+    background: #d4d4d47c;
+    width: 15rem;
+    padding: 0.7rem;
+    border: 0.2rem solid #9e9e9e;
+    border-radius: 1rem;
+}
+
+.swiper-slide .partners-item a {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.swiper-slide .partners-item img {
+    width: 5rem;
+    height: 5rem;
+    border: 0.2rem solid #c4c4c4;
+    border-radius: 0.5rem;
+}
+
+.swiper-slide .partners-item h4 {
+    font-family: "Shabnam";
+    font-size: 1.8rem;
+}
+
+/* override content styles for next pages - not home page */
+#content.special-style {
+    margin: 11rem 1rem 5rem 1rem;
+    width: auto;
+    border-radius: 1rem;
+    padding: 3rem 2rem;
+}
+
+/* search page styles */
+.search-container .search-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border: 0.2rem solid #ffbb6e;
+    border-radius: 1rem;
+    font-size: 2rem;
+}
+
+.search-container .search-box input {
+    font-family: inherit;
+    outline: none;
+    width: 100%;
+    font-size: 1.6rem;
+}
+
+.search-container .seperator-line {
+    width: 100%;
+    height: 2px;
+    background: #b7b7b7;
+    margin: 2rem 0;
+}
+
+.search-container .result-box span {
+    font-size: 1.6rem;
+}
+
+.result-box .products-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    height: fit-content;
+    max-height: 55rem;
+    background: #d8d8d8cc;
+    padding: 2rem;
+    border: 0.3rem solid #cacaca;
+    border-radius: 1rem;
+    overflow-y: auto;
+}
+
+.products-box .product-card {
+    width: 19rem;
+    border-radius: 1rem;
+}
+
+/* page title styles */
+.page-content .page-title {
+    width: 100%;
+    border-bottom: 0.2rem solid #c9c9c9;
+}
+
+.page-content .page-title h4 {
+    font-size: 1.8rem;
+    margin-bottom: 0.7rem;
+    width: fit-content;
+    color: #3c3c7a;
+    position: relative;
+}
+
+.page-content .page-title h4::after {
+    content: "";
+    position: absolute;
+    bottom: -0.9rem;
+    left: 0;
+    width: 100%;
+    height: 0.6rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    background: #3c3c7a;
+}
+
+/* cart page styles */
+.cart-box .cart-status {
+    text-align: center;
+    margin-top: 3rem;
+    color: #63666e;
+}
+
+.cart-box .cart-status i {
+    font-size: 12rem;
+    color: #972424c9;
+    cursor: auto;
+}
+
+.cart-box .cart-status p {
+    font-family: "Shabnam";
+    font-weight: bold;
+    font-size: 1.6rem;
+    margin-top: 2rem;
+}
+
+.cart-box .return-to-shop {
+    text-align: center;
+    margin-top: 2rem;
+    font-size: 1.6rem;
+}
+
+.cart-box .return-to-shop a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+    background: linear-gradient(135deg, #3c3c7a, #6669ae);
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    margin: 0 auto;
+}
+
+.cart-box .return-to-shop a,
+.return-to-shop i {
+    color: whitesmoke;
+}
+
+.cart-box .return-to-shop i {
+    font-size: 3rem;
+}
+
+/* page description styles */
+.page-content .page-description {
+    font-family: "Shabnam";
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    text-align: justify;
+    line-height: 2.5rem;
+    color: #000;
+}
