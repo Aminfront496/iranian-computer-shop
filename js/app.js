@@ -84,27 +84,27 @@ const bannerAdSlider = new Swiper('.banner-ad-slider', {
 // memories category slider
 const memoriesCategorySlider = new Swiper('.memories-category-slider', {
   direction: 'horizontal',
-  loop: true,
   rtl: true,
-  autoplay: {
-    delay: 0, 
-    disableOnInteraction: false,
+
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
   },
-  slidesPerView: 2,
+  slidesPerView: 1,
   freeMode: true,
-  speed: 3500,
+  speed: 500,
 });
 
 // equipment category slider
 const equipmentCategorySlider = new Swiper('.equipment-category-slider', {
   direction: 'horizontal',
-  loop: true,
   rtl: true,
-  autoplay: {
-    delay: 0, 
-    disableOnInteraction: false,
+  
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
   },
-  slidesPerView: 2,
+  slidesPerView: 1,
   freeMode: true,
   speed: 3500,
 });
