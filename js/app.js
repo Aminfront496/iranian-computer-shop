@@ -106,7 +106,7 @@ const equipmentCategorySlider = new Swiper('.equipment-category-slider', {
   },
   slidesPerView: 1,
   freeMode: true,
-  speed: 3500,
+  speed: 500,
 });
 
 // partners container slider
